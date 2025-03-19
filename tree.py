@@ -34,18 +34,14 @@ import os
 
 #write to a file all of the contents of the directory and the child directories bellow
 
-#cwd only gets from current directory cannot take variables
 cwd = os.getcwd()
-# print(cwd)
-# # print(os.path.isdir(cwd), True)
-# # print(os.path.isfile(cwd), False)
-# print(os.path.isdir(cwd+'/'+'tree.py'), False)
-# print(os.path.isfile(cwd+'/'+'tree.py'), True)
-# print(os.path.isdir(os.path.join(cwd,'tree.py')), False)
 
 def list_dir (start, alist):
     dircontents = os.listdir(os.path.realpath(start))
     for i in dircontents:
+        with open('test_file2', 'a') as f:
+            f.write(str(i) + "\n")
+            f.close()
         newpath = os.path.join(start, i)
         if os.path.isfile(cwd+'/'+ str(newpath)) == True:
             alist.append(newpath)
@@ -54,8 +50,8 @@ def list_dir (start, alist):
 #slide 162 in thinkpython2 pdf
 
 list_test = []
-list_dir('p1', list_test)
-print(list_test)
+list_dir('PythonFundamentals.Exercises.Part8', list_test)
+
 
 
 #!!!!! must run in terminal ensuring you are at a clear terminal not in a folder already!!!!!
